@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Was ist das?</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f4f1e9;
+      color: #111;
+      font-family: "Libre Baskerville", serif;
+    }
+
+    .page {
+      width: min(1380px, 94vw);
+      margin: 0 auto;
+      padding: 42px 0 60px;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .header {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      min-height: 300px;
+      padding-bottom: 35px;
+      border-bottom: 1px solid #111;
+    }
+
+    .title {
+      grid-column: 1 / 8;
+      margin: 0;
+
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(78px, 10vw, 145px);
+      font-weight: 700;
+      line-height: .78;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+
+    .chapter {
+      grid-column: 10 / 13;
+      align-self: end;
+      text-align: right;
+      padding-bottom: 28px;
+    }
+
+    .chapter-number {
+      font-family: "Libre Baskerville", serif;
+      font-size: 105px;
+      line-height: .8;
+    }
+
+    .chapter-name {
+      margin-top: 18px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+
+      padding: 26px 0;
+      border-bottom: 1px solid #111;
+    }
+
+    .intro-number {
+      grid-column: 1 / 2;
+
+      font-family: "Libre Baskerville", serif;
+      font-size: 20px;
+    }
+
+    .intro-text {
+      grid-column: 3 / 10;
+      margin: 0;
+
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+
+    /* =========================
+       OBJECT GRID
+    ========================= */
+
+    .objects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      border-bottom: 1px solid #111;
+    }
+
+    .object {
+      min-width: 0;
+      border-right: 1px solid #111;
+    }
+
+    .object:last-child {
+      border-right: none;
+    }
+
+
+    /* =========================
+       IMAGE
+    ========================= */
+
+    .image-frame {
+      height: 440px;
+      overflow: hidden;
+      background: #e8e4da;
+    }
+
+    .image-frame img {
+      display: block;
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+
+      filter: grayscale(100%) contrast(1.08);
+    }
+
+
+    /* =========================
+       OBJECT INFO
+    ========================= */
+
+    .object-info {
+      padding: 22px 24px 30px;
+    }
+
+    .object-number {
+      font-family: "Libre Baskerville", serif;
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .object-label {
+      margin: 24px 0 28px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: clamp(30px, 3vw, 44px);
+      font-weight: 600;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       AUDIO PLAYERS
+    ========================= */
+
+    .audio-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .audio-player {
+      padding-top: 14px;
+      border-top: 1px solid #111;
+    }
+
+    .audio-player:first-child {
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .play {
+      padding: 0;
+      margin: 0 0 12px;
+
+      border: none;
+      background: none;
+      color: #111;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+    }
+
+    .play::before {
+      content: "▶";
+      display: inline-block;
+      width: 30px;
+    }
+
+    .play.playing::before {
+      content: "■";
+    }
+
+    .play.chinese {
+      text-transform: none;
+    }
+
+    .player-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .skip {
+      padding: 0;
+
+      border: none;
+      background: none;
+      color: #111;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .progress {
+      width: 100%;
+      height: 2px;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      background: #111;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .progress::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 10px;
+      height: 10px;
+
+      border-radius: 50%;
+      background: #111;
+    }
+
+    .progress::-moz-range-thumb {
+      width: 10px;
+      height: 10px;
+
+      border: none;
+      border-radius: 50%;
+      background: #111;
+    }
+
+    .time {
+      min-width: 82px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 10px;
+
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    audio {
+      display: none;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid #111;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .page {
+        width: 92vw;
+      }
+
+      .objects {
+        display: block;
+      }
+
+      .object {
+        border-right: none;
+        border-bottom: 1px solid #111;
+      }
+
+      .object:last-child {
+        border-bottom: none;
+      }
+
+      .image-frame {
+        height: 500px;
+      }
+
+      .intro-text {
+        grid-column: 3 / 13;
+      }
+
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 560px) {
+
+      .header {
+        display: block;
+        min-height: auto;
+        padding-bottom: 30px;
+      }
+
+      .title {
+        font-size: 72px;
+        margin-bottom: 50px;
+      }
+
+      .chapter {
+        text-align: left;
+      }
+
+      .chapter-number {
+        font-size: 65px;
+      }
+
+      .intro {
+        display: block;
+      }
+
+      .intro-number {
+        margin-bottom: 14px;
+      }
+
+      .image-frame {
+        height: 340px;
+      }
+
+      .player-row {
+        grid-template-columns: auto 1fr;
+      }
+
+      .time {
+        grid-column: 2;
+        text-align: left;
+      }
+
+      .skip:last-child {
+        grid-column: 1;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<main class="page">
+
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <h1 class="title">
+      Was<br>
+      ist<br>
+      das?
+    </h1>
+
+    <div class="chapter">
+      <div class="chapter-number">04</div>
+      <div class="chapter-name">
+        Gegenstandsbeschreibung
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- INTRO -->
+
+  <section class="intro">
+
+    <div class="intro-number">
+      01—03
+    </div>
+
+    <p class="intro-text">
+      Hört euch die drei Beschreibungen genau an.
+      Ergänzt die fehlenden Informationen auf eurem Arbeitsblatt
+      und ordnet sie anschließend den einzelnen Bereichen einer
+      Gegenstandsbeschreibung zu.
+    </p>
+
+  </section>
+
+
+  <!-- OBJECTS -->
+
+  <section class="objects">
+
+
+    <!-- =====================
+         01 BIERKRUG
+    ====================== -->
+
+    <article class="object">
+
+      <div class="image-frame">
+        <img
+          src="Bierkrug.jpg"
+          alt="Historischer Bierkrug"
+        >
+      </div>
+
+      <div class="object-info">
+
+        <div class="object-number">
+          01
+        </div>
+
+        <div class="object-label">
+          Gegenstand 01
+        </div>
+
+
+        <div class="audio-stack">
+
+
+          <!-- DEUTSCH -->
+
+          <div class="audio-player">
+
+            <button
+              class="play"
+              data-audio="bierkrug"
+              data-label="Hören">
+              Hören
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="bierkrug"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="bierkrug"
+              >
+
+              <span
+                class="time"
+                data-audio="bierkrug">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="bierkrug"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="bierkrug"
+              src="Bierkrug.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+
+          <!-- 中文 -->
+
+          <div class="audio-player">
+
+            <button
+              class="play chinese"
+              data-audio="bier-ch"
+              data-label="中文">
+              中文
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="bier-ch"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="bier-ch"
+              >
+
+              <span
+                class="time"
+                data-audio="bier-ch">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="bier-ch"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="bier-ch"
+              src="Bier_CH.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================
+         02 KAFFEEMÜHLE
+    ====================== -->
+
+    <article class="object">
+
+      <div class="image-frame">
+        <img
+          src="Kaffeemuehle.jpg"
+          alt="Historische Kaffeemühle"
+        >
+      </div>
+
+      <div class="object-info">
+
+        <div class="object-number">
+          02
+        </div>
+
+        <div class="object-label">
+          Gegenstand 02
+        </div>
+
+
+        <div class="audio-stack">
+
+
+          <!-- DEUTSCH -->
+
+          <div class="audio-player">
+
+            <button
+              class="play"
+              data-audio="kaffeemuehle"
+              data-label="Hören">
+              Hören
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="kaffeemuehle"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="kaffeemuehle"
+              >
+
+              <span
+                class="time"
+                data-audio="kaffeemuehle">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="kaffeemuehle"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="kaffeemuehle"
+              src="Kaffeemuehle.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+
+          <!-- 中文 -->
+
+          <div class="audio-player">
+
+            <button
+              class="play chinese"
+              data-audio="kaffee-ch"
+              data-label="中文">
+              中文
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="kaffee-ch"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="kaffee-ch"
+              >
+
+              <span
+                class="time"
+                data-audio="kaffee-ch">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="kaffee-ch"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="kaffee-ch"
+              src="Kaffee_CH.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- =====================
+         03 KOFFERRADIO
+    ====================== -->
+
+    <article class="object">
+
+      <div class="image-frame">
+        <img
+          src="Kofferradio.jpg"
+          alt="Historisches Kofferradio"
+        >
+      </div>
+
+      <div class="object-info">
+
+        <div class="object-number">
+          03
+        </div>
+
+        <div class="object-label">
+          Gegenstand 03
+        </div>
+
+
+        <div class="audio-stack">
+
+
+          <!-- DEUTSCH -->
+
+          <div class="audio-player">
+
+            <button
+              class="play"
+              data-audio="kofferradio"
+              data-label="Hören">
+              Hören
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="kofferradio"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="kofferradio"
+              >
+
+              <span
+                class="time"
+                data-audio="kofferradio">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="kofferradio"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="kofferradio"
+              src="Kofferradio.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+
+          <!-- 中文 -->
+
+          <div class="audio-player">
+
+            <button
+              class="play chinese"
+              data-audio="radio-ch"
+              data-label="中文">
+              中文
+            </button>
+
+            <div class="player-row">
+
+              <button
+                class="skip"
+                data-audio="radio-ch"
+                data-skip="-10">
+                ◀ 10s
+              </button>
+
+              <input
+                class="progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                data-audio="radio-ch"
+              >
+
+              <span
+                class="time"
+                data-audio="radio-ch">
+                00:00 / 00:00
+              </span>
+
+              <button
+                class="skip"
+                data-audio="radio-ch"
+                data-skip="10">
+                10s ▶
+              </button>
+
+            </div>
+
+            <audio
+              id="radio-ch"
+              src="Radio_CH.mp3"
+              preload="metadata">
+            </audio>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  </section>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <span>
+      Deutsch · Schreibkurs
+    </span>
+
+    <span>
+      04 · Gegenstandsbeschreibung
+    </span>
+
+  </footer>
+
+
+</main>
+
+
+<script>
+
+  const buttons =
+    document.querySelectorAll(".play");
+
+  const audios =
+    document.querySelectorAll("audio");
+
+  const progressBars =
+    document.querySelectorAll(".progress");
+
+  const skipButtons =
+    document.querySelectorAll(".skip");
+
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) {
+      return "00:00";
+    }
+
+    const minutes =
+      Math.floor(seconds / 60);
+
+    const secs =
+      Math.floor(seconds % 60);
+
+    return (
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(secs).padStart(2, "0")
+    );
+
+  }
+
+
+  function getButton(audioId) {
+
+    return document.querySelector(
+      '.play[data-audio="' +
+      audioId +
+      '"]'
+    );
+
+  }
+
+
+  function getProgress(audioId) {
+
+    return document.querySelector(
+      '.progress[data-audio="' +
+      audioId +
+      '"]'
+    );
+
+  }
+
+
+  function getTime(audioId) {
+
+    return document.querySelector(
+      '.time[data-audio="' +
+      audioId +
+      '"]'
+    );
+
+  }
+
+
+  function resetButton(button) {
+
+    if (!button) {
+      return;
+    }
+
+    button.classList.remove("playing");
+    button.textContent =
+      button.dataset.label;
+
+  }
+
+
+  function stopOtherAudios(activeAudio) {
+
+    audios.forEach(audio => {
+
+      if (audio !== activeAudio) {
+
+        audio.pause();
+
+        resetButton(
+          getButton(audio.id)
+        );
+
+      }
+
+    });
+
+  }
+
+
+  /* =========================
+     PLAY / PAUSE
+  ========================= */
+
+  buttons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      async () => {
+
+        const audio =
+          document.getElementById(
+            button.dataset.audio
+          );
+
+        if (!audio) {
+          return;
+        }
+
+        if (audio.paused) {
+
+          stopOtherAudios(audio);
+
+          try {
+
+            await audio.play();
+
+            button.classList.add(
+              "playing"
+            );
+
+          } catch (error) {
+
+            console.error(
+              "Audio konnte nicht abgespielt werden:",
+              error
+            );
+
+          }
+
+        } else {
+
+          audio.pause();
+
+          resetButton(button);
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     AUDIO STATUS
+  ========================= */
+
+  audios.forEach(audio => {
+
+    const progress =
+      getProgress(audio.id);
+
+    const time =
+      getTime(audio.id);
+
+    const button =
+      getButton(audio.id);
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        if (time) {
+
+          time.textContent =
+            "00:00 / " +
+            formatTime(audio.duration);
+
+        }
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "timeupdate",
+      () => {
+
+        if (
+          progress &&
+          Number.isFinite(audio.duration) &&
+          audio.duration > 0
+        ) {
+
+          progress.value =
+            (audio.currentTime /
+             audio.duration) * 100;
+
+        }
+
+        if (time) {
+
+          time.textContent =
+            formatTime(audio.currentTime) +
+            " / " +
+            formatTime(audio.duration);
+
+        }
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "ended",
+      () => {
+
+        resetButton(button);
+
+        audio.currentTime = 0;
+
+        if (progress) {
+          progress.value = 0;
+        }
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     PROGRESS SEEK
+  ========================= */
+
+  progressBars.forEach(progress => {
+
+    progress.addEventListener(
+      "input",
+      () => {
+
+        const audio =
+          document.getElementById(
+            progress.dataset.audio
+          );
+
+        if (
+          !audio ||
+          !Number.isFinite(audio.duration)
+        ) {
+          return;
+        }
+
+        audio.currentTime =
+          (progress.value / 100) *
+          audio.duration;
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     ±10 SECONDS
+  ========================= */
+
+  skipButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const audio =
+          document.getElementById(
+            button.dataset.audio
+          );
+
+        if (!audio) {
+          return;
+        }
+
+        const skip =
+          Number(
+            button.dataset.skip
+          );
+
+        const target =
+          audio.currentTime + skip;
+
+        const duration =
+          Number.isFinite(audio.duration)
+            ? audio.duration
+            : target;
+
+        audio.currentTime =
+          Math.max(
+            0,
+            Math.min(
+              target,
+              duration
+            )
+          );
+
+      }
+    );
+
+  });
+
+</script>
+
+</body>
+</html>
