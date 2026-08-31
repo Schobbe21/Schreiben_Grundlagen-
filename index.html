@@ -15,7 +15,6 @@
   >
 
   <style>
-
     * {
       box-sizing: border-box;
     }
@@ -43,7 +42,6 @@
 
     h1 {
       margin: 0;
-
       font-family: "Oswald", sans-serif;
       font-size: clamp(78px, 11vw, 155px);
       font-weight: 700;
@@ -55,7 +53,6 @@
     .intro {
       max-width: 620px;
       margin: 45px 0 70px;
-
       font-size: 17px;
       line-height: 1.7;
     }
@@ -69,9 +66,18 @@
       grid-template-columns: 100px 1fr;
       gap: 30px;
       align-items: baseline;
-
       padding: 25px 0;
       border-bottom: 1px solid #111;
+    }
+
+    .item a {
+      display: contents;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .item:hover {
+      background: rgba(0,0,0,.04);
     }
 
     .number {
@@ -100,10 +106,8 @@
       margin-top: 70px;
       padding-top: 15px;
       border-top: 1px solid #111;
-
       display: flex;
       justify-content: space-between;
-
       font-family: "Oswald", sans-serif;
       font-size: 12px;
       letter-spacing: .1em;
@@ -111,7 +115,6 @@
     }
 
     @media (max-width: 600px) {
-
       .item {
         grid-template-columns: 60px 1fr;
         gap: 18px;
@@ -120,9 +123,7 @@
       .number {
         font-size: 34px;
       }
-
     }
-
   </style>
 </head>
 
@@ -131,70 +132,82 @@
 <main class="page">
 
   <header class="header">
-
     <h1>
       Schreiben<br>
       Grundlagen
     </h1>
-
   </header>
 
-
   <div class="intro">
-
     In diesem Kurs beschäftigen wir uns mit verschiedenen
     grundlegenden Textsorten des Deutschen. Im Mittelpunkt
     stehen Aufbau, sprachliche Gestaltung und die praktische
     Anwendung beim Schreiben.
-
   </div>
-
 
   <section class="course">
 
     <div class="item special">
-      <div class="number">00</div>
-      <div class="topic">Einführung</div>
+      <a href="00_einfuehrung/index.html">
+        <div class="number">00</div>
+        <div class="topic">Einführung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">01</div>
-      <div class="topic">Selbstvorstellung</div>
+      <a href="01_selbstvorstellung/index.html">
+        <div class="number">01</div>
+        <div class="topic">Selbstvorstellung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">02</div>
-      <div class="topic">Einladung</div>
+      <a href="02_einladung/index.html">
+        <div class="number">02</div>
+        <div class="topic">Einladung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">03</div>
-      <div class="topic">Wegbeschreibung</div>
+      <a href="03_wegbeschreibung/index.html">
+        <div class="number">03</div>
+        <div class="topic">Wegbeschreibung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">04</div>
-      <div class="topic">Gegenstandsbeschreibung</div>
+      <a href="04_gegenstandsbeschreibung/index.html">
+        <div class="number">04</div>
+        <div class="topic">Gegenstandsbeschreibung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">05</div>
-      <div class="topic">Vorgangsbeschreibung</div>
+      <a href="05_vorgangsbeschreibung/index.html">
+        <div class="number">05</div>
+        <div class="topic">Vorgangsbeschreibung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">06</div>
-      <div class="topic">Personenbeschreibung</div>
+      <a href="06_personenbeschreibung/index.html">
+        <div class="number">06</div>
+        <div class="topic">Personenbeschreibung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">07</div>
-      <div class="topic">Nacherzählung</div>
+      <a href="07_nacherzaehlung/index.html">
+        <div class="number">07</div>
+        <div class="topic">Nacherzählung</div>
+      </a>
     </div>
 
     <div class="item">
-      <div class="number">08</div>
-      <div class="topic">Bildergeschichte</div>
+      <a href="08_bildergeschichte/index.html">
+        <div class="number">08</div>
+        <div class="topic">Bildergeschichte</div>
+      </a>
     </div>
 
     <div class="item special">
@@ -204,12 +217,9 @@
 
   </section>
 
-
   <footer>
-
     <span>Deutsch · Schreibkurs</span>
     <span>SZTU</span>
-
   </footer>
 
 </main>
