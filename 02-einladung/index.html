@@ -8,9 +8,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
     * {
       box-sizing: border-box;
     }
@@ -47,6 +51,7 @@
       padding: 20px 18px 30px;
       border-right: 1px solid #111;
       min-height: 760px;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -84,36 +89,120 @@
       margin: 0 0 20px;
     }
 
-    .play {
-      border: none;
-      background: none;
-      padding: 0;
+
+    /* =========================
+       AUDIO
+    ========================= */
+
+    .audio-controls {
+      display: grid;
+      grid-template-columns: 58px 1fr 58px;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .audio-controls button {
+      height: 44px;
+
+      border: 1.5px solid #111;
+      background: transparent;
       color: #111;
+
       font-family: "Oswald", sans-serif;
-      font-size: 17px;
+      font-size: 12px;
       font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
+      letter-spacing: .02em;
+
       cursor: pointer;
-      text-align: left;
+    }
+
+    .audio-controls button:hover {
+      background: #111;
+      color: #f4f1e9;
+    }
+
+    .play {
+      font-size: 13px !important;
+      text-transform: uppercase;
+      letter-spacing: .04em !important;
     }
 
     .play::before {
       content: "▶";
-      margin-right: 8px;
+      margin-right: 6px;
     }
 
     .play.playing::before {
       content: "■";
     }
 
-    .play:hover {
-      font-style: italic;
+
+    /* =========================
+       TIMELINE
+    ========================= */
+
+    .timeline {
+      grid-column: 1 / -1;
+
+      width: 100%;
+      height: 4px;
+
+      margin-top: 11px;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      background: rgba(17,17,17,.3);
+      cursor: pointer;
+    }
+
+    .timeline::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 16px;
+      height: 16px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .timeline::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .time-row {
+      grid-column: 1 / -1;
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: -2px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 11px;
     }
 
     audio {
       display: none;
     }
+
+
+    /* =========================
+       RIGHT IMAGE
+    ========================= */
 
     .right {
       position: relative;
@@ -127,18 +216,25 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: grayscale(100%) contrast(1.15);
+
+      filter:
+        grayscale(100%)
+        contrast(1.15);
     }
 
     .side-note {
       position: absolute;
       top: 0;
       right: 0;
+
       width: 84px;
       height: 100%;
+
       background: #f4f1e9;
       border-left: 1px solid #111;
+
       padding: 16px 10px;
+
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -149,8 +245,10 @@
       font-size: 12px;
       line-height: 1.2;
       text-transform: uppercase;
+
       writing-mode: vertical-rl;
       transform: rotate(180deg);
+
       letter-spacing: .05em;
     }
 
@@ -161,20 +259,34 @@
       align-self: center;
     }
 
+
+    /* =========================
+       FOOTER
+    ========================= */
+
     .footer {
       margin-top: 28px;
       padding-top: 14px;
+
       border-top: 1px solid #111;
+
       display: flex;
       justify-content: space-between;
       gap: 20px;
+
       font-family: "Oswald", sans-serif;
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: .09em;
     }
 
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
     @media (max-width: 900px) {
+
       .spread {
         grid-template-columns: 1fr;
       }
@@ -188,12 +300,54 @@
         border-bottom: 1px solid #111;
       }
 
+      .audio-controls {
+        grid-template-columns: 80px 1fr 80px;
+        max-width: 460px;
+      }
+
       .right {
         min-height: 520px;
       }
+
     }
+
+    @media (max-width: 520px) {
+
+      .page {
+        width: 92vw;
+      }
+
+      .invite {
+        padding: 20px 15px 28px;
+      }
+
+      .audio-controls {
+        grid-template-columns: 60px 1fr 60px;
+        gap: 5px;
+      }
+
+      .audio-controls button {
+        height: 42px;
+        font-size: 11px;
+      }
+
+      .play {
+        font-size: 12px !important;
+      }
+
+      .right {
+        min-height: 430px;
+      }
+
+      .side-note {
+        width: 65px;
+      }
+
+    }
+
   </style>
 </head>
+
 
 <body>
 
@@ -201,129 +355,609 @@
 
   <section class="spread">
 
+
+    <!-- LEFT -->
+
     <div class="left">
 
-      <article class="invite">
-        <div>
-          <div class="number">1</div>
-          <div class="register">Privat</div>
 
-          <h2 class="title">Grillparty</h2>
+      <!-- 1 PRIVAT -->
+
+      <article class="invite">
+
+        <div>
+
+          <div class="number">1</div>
+
+          <div class="register">
+            Privat
+          </div>
+
+          <h2 class="title">
+            Grillparty
+          </h2>
 
           <p class="description">
             Eine private Einladung an Freunde.
           </p>
+
         </div>
 
-        <div>
-          <button class="play" data-audio="einladung1">Hören</button>
-          <audio id="einladung1" src="Einladung_1.mp3"></audio>
+
+        <div class="audio-controls">
+
+          <button
+            class="skip back"
+            type="button"
+            data-audio="einladung1"
+          >
+            −10 s
+          </button>
+
+          <button
+            class="play"
+            type="button"
+            data-audio="einladung1"
+          >
+            Hören
+          </button>
+
+          <button
+            class="skip forward"
+            type="button"
+            data-audio="einladung1"
+          >
+            +10 s
+          </button>
+
+          <input
+            class="timeline"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            data-audio="einladung1"
+          >
+
+          <div class="time-row">
+
+            <span
+              class="current-time"
+              data-audio="einladung1"
+            >
+              0:00
+            </span>
+
+            <span
+              class="duration"
+              data-audio="einladung1"
+            >
+              0:00
+            </span>
+
+          </div>
+
         </div>
+
+        <audio
+          id="einladung1"
+          preload="metadata"
+          src="Einladung_1.mp3"
+        ></audio>
+
       </article>
 
-      <article class="invite">
-        <div>
-          <div class="number">2</div>
-          <div class="register">Halbformell</div>
 
-          <h2 class="title">KI-Symposium</h2>
+      <!-- 2 HALBFORMELL -->
+
+      <article class="invite">
+
+        <div>
+
+          <div class="number">2</div>
+
+          <div class="register">
+            Halbformell
+          </div>
+
+          <h2 class="title">
+            KI-Symposium
+          </h2>
 
           <p class="description">
             Eine Einladung zu einer universitären Veranstaltung.
           </p>
+
         </div>
 
-        <div>
-          <button class="play" data-audio="einladung2">Hören</button>
-          <audio id="einladung2" src="Einladung_2.mp3"></audio>
+
+        <div class="audio-controls">
+
+          <button
+            class="skip back"
+            type="button"
+            data-audio="einladung2"
+          >
+            −10 s
+          </button>
+
+          <button
+            class="play"
+            type="button"
+            data-audio="einladung2"
+          >
+            Hören
+          </button>
+
+          <button
+            class="skip forward"
+            type="button"
+            data-audio="einladung2"
+          >
+            +10 s
+          </button>
+
+          <input
+            class="timeline"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            data-audio="einladung2"
+          >
+
+          <div class="time-row">
+
+            <span
+              class="current-time"
+              data-audio="einladung2"
+            >
+              0:00
+            </span>
+
+            <span
+              class="duration"
+              data-audio="einladung2"
+            >
+              0:00
+            </span>
+
+          </div>
+
         </div>
+
+        <audio
+          id="einladung2"
+          preload="metadata"
+          src="Einladung_2.mp3"
+        ></audio>
+
       </article>
 
-      <article class="invite">
-        <div>
-          <div class="number">3</div>
-          <div class="register">Formell</div>
 
-          <h2 class="title">Konsultreffen</h2>
+      <!-- 3 FORMELL -->
+
+      <article class="invite">
+
+        <div>
+
+          <div class="number">3</div>
+
+          <div class="register">
+            Formell
+          </div>
+
+          <h2 class="title">
+            Konsultreffen
+          </h2>
 
           <p class="description">
             Eine formelle Einladung zu einem offiziellen Treffen.
           </p>
+
         </div>
 
-        <div>
-          <button class="play" data-audio="einladung3">Hören</button>
-          <audio id="einladung3" src="Einladung_3.mp3"></audio>
+
+        <div class="audio-controls">
+
+          <button
+            class="skip back"
+            type="button"
+            data-audio="einladung3"
+          >
+            −10 s
+          </button>
+
+          <button
+            class="play"
+            type="button"
+            data-audio="einladung3"
+          >
+            Hören
+          </button>
+
+          <button
+            class="skip forward"
+            type="button"
+            data-audio="einladung3"
+          >
+            +10 s
+          </button>
+
+          <input
+            class="timeline"
+            type="range"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            data-audio="einladung3"
+          >
+
+          <div class="time-row">
+
+            <span
+              class="current-time"
+              data-audio="einladung3"
+            >
+              0:00
+            </span>
+
+            <span
+              class="duration"
+              data-audio="einladung3"
+            >
+              0:00
+            </span>
+
+          </div>
+
         </div>
+
+        <audio
+          id="einladung3"
+          preload="metadata"
+          src="Einladung_3.mp3"
+        ></audio>
+
       </article>
+
 
     </div>
 
+
+    <!-- RIGHT -->
 
     <div class="right">
 
-      <img src="Party.png" alt="Einladung und gesellschaftliches Treffen">
+      <img
+        src="Party.png"
+        alt="Einladung und gesellschaftliches Treffen"
+      >
 
       <div class="side-note">
-        <span>Schreiben · Einladung</span>
-        <div class="big-one">1</div>
+
+        <span>
+          Schreiben · Einladung
+        </span>
+
+        <div class="big-one">
+          1
+        </div>
+
       </div>
 
     </div>
+
 
   </section>
 
 
   <footer class="footer">
-    <span>Deutsch · Schreibkurs</span>
-    <span>02 · Einladung</span>
+
+    <span>
+      Deutsch · Schreibkurs
+    </span>
+
+    <span>
+      02 · Einladung
+    </span>
+
   </footer>
 
 </main>
 
 
 <script>
-  const buttons = document.querySelectorAll(".play");
-  const audios = document.querySelectorAll("audio");
+
+  const buttons =
+    document.querySelectorAll(".play");
+
+  const audios =
+    document.querySelectorAll("audio");
+
+  const skipButtons =
+    document.querySelectorAll(".skip");
+
+  const timelines =
+    document.querySelectorAll(".timeline");
+
+
+  /* =========================
+     ZEIT FORMATIEREN
+  ========================= */
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) {
+      return "0:00";
+    }
+
+    const minutes =
+      Math.floor(seconds / 60);
+
+    const secs =
+      Math.floor(seconds % 60);
+
+    return (
+      minutes +
+      ":" +
+      secs.toString().padStart(2, "0")
+    );
+
+  }
+
+
+  /* =========================
+     PLAY / PAUSE
+  ========================= */
 
   buttons.forEach(button => {
 
-    button.addEventListener("click", () => {
+    button.addEventListener(
+      "click",
+      async () => {
 
-      const audio = document.getElementById(button.dataset.audio);
+        const audio =
+          document.getElementById(
+            button.dataset.audio
+          );
 
-      audios.forEach(otherAudio => {
-        if (otherAudio !== audio) {
-          otherAudio.pause();
-          otherAudio.currentTime = 0;
+        if (!audio) {
+          return;
         }
-      });
 
-      buttons.forEach(otherButton => {
-        if (otherButton !== button) {
-          otherButton.classList.remove("playing");
-          otherButton.textContent = "Hören";
+
+        /* Andere Audios stoppen */
+
+        audios.forEach(otherAudio => {
+
+          if (otherAudio !== audio) {
+
+            otherAudio.pause();
+            otherAudio.currentTime = 0;
+
+          }
+
+        });
+
+
+        /* Andere Buttons zurücksetzen */
+
+        buttons.forEach(otherButton => {
+
+          if (otherButton !== button) {
+
+            otherButton.classList.remove(
+              "playing"
+            );
+
+            otherButton.textContent =
+              "Hören";
+
+          }
+
+        });
+
+
+        /* Aktuelles Audio */
+
+        if (audio.paused) {
+
+          try {
+
+            await audio.play();
+
+            button.classList.add(
+              "playing"
+            );
+
+            button.textContent =
+              "Pause";
+
+          } catch (error) {
+
+            console.error(
+              "Audio konnte nicht abgespielt werden:",
+              error
+            );
+
+          }
+
+        } else {
+
+          audio.pause();
+
+          button.classList.remove(
+            "playing"
+          );
+
+          button.textContent =
+            "Hören";
+
         }
-      });
 
-      if (audio.paused) {
-        audio.play();
-        button.classList.add("playing");
-        button.textContent = "Stop";
-      } else {
-        audio.pause();
-        button.classList.remove("playing");
-        button.textContent = "Hören";
       }
-
-      audio.onended = () => {
-        button.classList.remove("playing");
-        button.textContent = "Hören";
-      };
-
-    });
+    );
 
   });
+
+
+  /* =========================
+     ±10 SEKUNDEN
+  ========================= */
+
+  skipButtons.forEach(button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        const audio =
+          document.getElementById(
+            button.dataset.audio
+          );
+
+        if (!audio) {
+          return;
+        }
+
+
+        if (
+          button.classList.contains("back")
+        ) {
+
+          audio.currentTime =
+            Math.max(
+              0,
+              audio.currentTime - 10
+            );
+
+        }
+
+
+        if (
+          button.classList.contains("forward")
+        ) {
+
+          audio.currentTime =
+            Math.min(
+              audio.duration || Infinity,
+              audio.currentTime + 10
+            );
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     ZEITLEISTEN
+  ========================= */
+
+  timelines.forEach(timeline => {
+
+    const id =
+      timeline.dataset.audio;
+
+    const audio =
+      document.getElementById(id);
+
+    const currentTime =
+      document.querySelector(
+        `.current-time[data-audio="${id}"]`
+      );
+
+    const duration =
+      document.querySelector(
+        `.duration[data-audio="${id}"]`
+      );
+
+    const playButton =
+      document.querySelector(
+        `.play[data-audio="${id}"]`
+      );
+
+
+    /* Dauer laden */
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        timeline.max =
+          audio.duration;
+
+        duration.textContent =
+          formatTime(
+            audio.duration
+          );
+
+      }
+    );
+
+
+    /* Fortschritt aktualisieren */
+
+    audio.addEventListener(
+      "timeupdate",
+      () => {
+
+        timeline.value =
+          audio.currentTime;
+
+        currentTime.textContent =
+          formatTime(
+            audio.currentTime
+          );
+
+      }
+    );
+
+
+    /* Zeitleiste manuell verschieben */
+
+    timeline.addEventListener(
+      "input",
+      () => {
+
+        audio.currentTime =
+          Number(
+            timeline.value
+          );
+
+      }
+    );
+
+
+    /* Audio beendet */
+
+    audio.addEventListener(
+      "ended",
+      () => {
+
+        playButton.classList.remove(
+          "playing"
+        );
+
+        playButton.textContent =
+          "Hören";
+
+        timeline.value = 0;
+
+        currentTime.textContent =
+          "0:00";
+
+      }
+    );
+
+  });
+
 </script>
 
 </body>
