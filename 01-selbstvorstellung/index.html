@@ -8,6 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap"
     rel="stylesheet"
@@ -32,7 +33,10 @@
       padding: 60px 0 90px;
     }
 
-    /* HEADER */
+
+    /* =========================
+       HEADER
+    ========================= */
 
     .header {
       display: grid;
@@ -45,6 +49,7 @@
     .title {
       grid-column: 1 / 6;
       align-self: start;
+
       margin: 0;
 
       font-family: "Oswald", sans-serif;
@@ -59,6 +64,7 @@
       grid-column: 8 / 13;
       align-self: end;
       padding-bottom: 42px;
+
       font-size: 16px;
       line-height: 1.7;
     }
@@ -71,7 +77,9 @@
     }
 
 
-    /* PERSONEN */
+    /* =========================
+       GRID
+    ========================= */
 
     .people {
       display: grid;
@@ -114,16 +122,20 @@
     }
 
 
-    /* BILDER */
+    /* =========================
+       PORTRÄTS
+    ========================= */
 
     .portrait {
       display: block;
+
       width: 100%;
-      height: 330px;
-      margin-bottom: 24px;
+      height: 350px;
+
+      margin-bottom: 26px;
 
       object-fit: cover;
-      object-position: center;
+      object-position: center center;
 
       filter: grayscale(100%);
     }
@@ -133,26 +145,49 @@
     }
 
     .person:nth-child(2) .portrait {
-      height: 310px;
+      height: 330px;
+    }
+
+    /*
+      Lena:
+      Bildinhalt etwas nach unten verschieben,
+      damit oben mehr vom Kopf sichtbar bleibt.
+    */
+
+    .person:nth-child(3) .portrait {
+      height: 350px;
+      object-position: center 35%;
     }
 
     .person:nth-child(4) .portrait {
       height: 370px;
     }
 
-    .person:nth-child(6) .portrait {
+    .person:nth-child(5) .portrait {
       height: 350px;
     }
 
+    /*
+      Pamela:
+      ebenfalls etwas tiefer positionieren.
+    */
 
-    /* TYPOGRAFIE */
+    .person:nth-child(6) .portrait {
+      height: 370px;
+      object-position: center 35%;
+    }
+
+
+    /* =========================
+       TYPOGRAFIE
+    ========================= */
 
     .number {
       margin-bottom: 20px;
 
       font-family: "Oswald", sans-serif;
-      font-weight: 700;
       font-size: 92px;
+      font-weight: 700;
       line-height: .85;
     }
 
@@ -163,30 +198,48 @@
       font-size: clamp(42px, 6vw, 78px);
       font-weight: 600;
       line-height: .95;
+
       text-transform: uppercase;
     }
 
 
-    /* AUDIO */
+    /* =========================
+       AUDIO PLAYER
+    ========================= */
 
-    .play {
-      margin-top: 24px;
-      padding: 0;
+    .audio-controls {
+      margin-top: 28px;
 
-      border: none;
-      background: none;
-
-      font-family: "Oswald", sans-serif;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: .08em;
-
-      cursor: pointer;
-      color: #111;
+      display: grid;
+      grid-template-columns: 95px 1fr 95px;
+      gap: 12px;
+      align-items: center;
     }
 
-    .play:hover {
-      font-style: italic;
+    .audio-controls button {
+      height: 56px;
+
+      border: 2px solid #111;
+      background: transparent;
+      color: #111;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: .03em;
+
+      cursor: pointer;
+    }
+
+    .audio-controls button:hover {
+      background: #111;
+      color: #f4f1e9;
+    }
+
+    .play {
+      font-size: 18px !important;
+      text-transform: uppercase;
+      letter-spacing: .06em !important;
     }
 
     .play::before {
@@ -198,26 +251,92 @@
       content: "■";
     }
 
+
+    /* =========================
+       ZEITLEISTE
+    ========================= */
+
+    .timeline {
+      grid-column: 1 / -1;
+
+      width: 100%;
+      height: 5px;
+
+      margin-top: 14px;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      background: rgba(17,17,17,.30);
+
+      cursor: pointer;
+    }
+
+    .timeline::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 20px;
+      height: 20px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .timeline::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .time-row {
+      grid-column: 1 / -1;
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: -4px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 14px;
+    }
+
     audio {
       display: none;
     }
 
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
       margin-top: 110px;
       padding-top: 20px;
+
       border-top: 1px solid #111;
 
       font-family: "Oswald", sans-serif;
       font-size: 13px;
       letter-spacing: .12em;
+
       text-transform: uppercase;
     }
 
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 700px) {
 
@@ -245,16 +364,40 @@
 
       .person,
       .person:nth-child(n) {
-        margin: 0 0 80px;
+        margin: 0 0 90px;
       }
 
       .portrait,
       .person:nth-child(n) .portrait {
-        height: min(110vw, 500px);
+        height: min(105vw, 500px);
+      }
+
+      /*
+        Lena + Pamela auch auf Handy
+        etwas günstiger positionieren.
+      */
+
+      .person:nth-child(3) .portrait,
+      .person:nth-child(6) .portrait {
+        object-position: center 35%;
       }
 
       .number {
         font-size: 70px;
+      }
+
+      .audio-controls {
+        grid-template-columns: 78px 1fr 78px;
+        gap: 8px;
+      }
+
+      .audio-controls button {
+        height: 52px;
+        font-size: 14px;
+      }
+
+      .play {
+        font-size: 16px !important;
       }
     }
 
@@ -265,6 +408,9 @@
 <body>
 
 <main class="page">
+
+
+  <!-- HEADER -->
 
   <header class="header">
 
@@ -289,6 +435,9 @@
   </header>
 
 
+
+  <!-- PERSONEN -->
+
   <section class="people">
 
 
@@ -303,11 +452,59 @@
       >
 
       <div class="number">01</div>
+
       <h2 class="name">Jürgen</h2>
 
-      <button class="play" data-audio="juergen">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button
+          class="skip back"
+          data-audio="juergen"
+        >
+          −10 s
+        </button>
+
+        <button
+          class="play"
+          data-audio="juergen"
+        >
+          Hören
+        </button>
+
+        <button
+          class="skip forward"
+          data-audio="juergen"
+        >
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="juergen"
+        >
+
+        <div class="time-row">
+          <span
+            class="current-time"
+            data-audio="juergen"
+          >
+            0:00
+          </span>
+
+          <span
+            class="duration"
+            data-audio="juergen"
+          >
+            0:00
+          </span>
+        </div>
+
+      </div>
 
       <audio
         id="juergen"
@@ -315,6 +512,7 @@
       ></audio>
 
     </article>
+
 
 
     <!-- 02 ANKE -->
@@ -328,11 +526,39 @@
       >
 
       <div class="number">02</div>
+
       <h2 class="name">Anke</h2>
 
-      <button class="play" data-audio="anke">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button class="skip back" data-audio="anke">
+          −10 s
+        </button>
+
+        <button class="play" data-audio="anke">
+          Hören
+        </button>
+
+        <button class="skip forward" data-audio="anke">
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="anke"
+        >
+
+        <div class="time-row">
+          <span class="current-time" data-audio="anke">0:00</span>
+          <span class="duration" data-audio="anke">0:00</span>
+        </div>
+
+      </div>
 
       <audio
         id="anke"
@@ -340,6 +566,7 @@
       ></audio>
 
     </article>
+
 
 
     <!-- 03 LENA -->
@@ -353,11 +580,39 @@
       >
 
       <div class="number">03</div>
+
       <h2 class="name">Lena</h2>
 
-      <button class="play" data-audio="lena">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button class="skip back" data-audio="lena">
+          −10 s
+        </button>
+
+        <button class="play" data-audio="lena">
+          Hören
+        </button>
+
+        <button class="skip forward" data-audio="lena">
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="lena"
+        >
+
+        <div class="time-row">
+          <span class="current-time" data-audio="lena">0:00</span>
+          <span class="duration" data-audio="lena">0:00</span>
+        </div>
+
+      </div>
 
       <audio
         id="lena"
@@ -365,6 +620,7 @@
       ></audio>
 
     </article>
+
 
 
     <!-- 04 MARCEL -->
@@ -378,11 +634,39 @@
       >
 
       <div class="number">04</div>
+
       <h2 class="name">Marcel</h2>
 
-      <button class="play" data-audio="marcel">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button class="skip back" data-audio="marcel">
+          −10 s
+        </button>
+
+        <button class="play" data-audio="marcel">
+          Hören
+        </button>
+
+        <button class="skip forward" data-audio="marcel">
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="marcel"
+        >
+
+        <div class="time-row">
+          <span class="current-time" data-audio="marcel">0:00</span>
+          <span class="duration" data-audio="marcel">0:00</span>
+        </div>
+
+      </div>
 
       <audio
         id="marcel"
@@ -390,6 +674,7 @@
       ></audio>
 
     </article>
+
 
 
     <!-- 05 ELYAS -->
@@ -403,11 +688,39 @@
       >
 
       <div class="number">05</div>
+
       <h2 class="name">Elyas</h2>
 
-      <button class="play" data-audio="elyas">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button class="skip back" data-audio="elyas">
+          −10 s
+        </button>
+
+        <button class="play" data-audio="elyas">
+          Hören
+        </button>
+
+        <button class="skip forward" data-audio="elyas">
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="elyas"
+        >
+
+        <div class="time-row">
+          <span class="current-time" data-audio="elyas">0:00</span>
+          <span class="duration" data-audio="elyas">0:00</span>
+        </div>
+
+      </div>
 
       <audio
         id="elyas"
@@ -415,6 +728,7 @@
       ></audio>
 
     </article>
+
 
 
     <!-- 06 PAMELA -->
@@ -428,11 +742,39 @@
       >
 
       <div class="number">06</div>
+
       <h2 class="name">Pamela</h2>
 
-      <button class="play" data-audio="pamela">
-        Hören
-      </button>
+      <div class="audio-controls">
+
+        <button class="skip back" data-audio="pamela">
+          −10 s
+        </button>
+
+        <button class="play" data-audio="pamela">
+          Hören
+        </button>
+
+        <button class="skip forward" data-audio="pamela">
+          +10 s
+        </button>
+
+        <input
+          class="timeline"
+          type="range"
+          min="0"
+          max="100"
+          value="0"
+          step="0.1"
+          data-audio="pamela"
+        >
+
+        <div class="time-row">
+          <span class="current-time" data-audio="pamela">0:00</span>
+          <span class="duration" data-audio="pamela">0:00</span>
+        </div>
+
+      </div>
 
       <audio
         id="pamela"
@@ -452,76 +794,285 @@
 </main>
 
 
+
 <script>
 
-  const buttons = document.querySelectorAll(".play");
-  const audios = document.querySelectorAll("audio");
+  const buttons =
+    document.querySelectorAll(".play");
+
+  const audios =
+    document.querySelectorAll("audio");
+
+  const skipButtons =
+    document.querySelectorAll(".skip");
+
+  const timelines =
+    document.querySelectorAll(".timeline");
+
+
+  /*
+   * Zeit in m:ss umwandeln
+   */
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) {
+      return "0:00";
+    }
+
+    const minutes =
+      Math.floor(seconds / 60);
+
+    const secs =
+      Math.floor(seconds % 60);
+
+    return (
+      minutes +
+      ":" +
+      secs.toString().padStart(2, "0")
+    );
+  }
+
+
+  /*
+   * PLAY / PAUSE
+   */
 
   buttons.forEach(button => {
 
     button.addEventListener("click", () => {
 
-      const audio = document.getElementById(
-        button.dataset.audio
-      );
+      const audio =
+        document.getElementById(
+          button.dataset.audio
+        );
 
-      /* Andere Audios stoppen */
+
+      /*
+       * Andere Audios stoppen
+       */
 
       audios.forEach(otherAudio => {
 
         if (otherAudio !== audio) {
+
           otherAudio.pause();
           otherAudio.currentTime = 0;
+
         }
 
       });
 
 
-      /* Andere Buttons zurücksetzen */
+      /*
+       * Andere Play-Buttons zurücksetzen
+       */
 
       buttons.forEach(otherButton => {
 
         if (otherButton !== button) {
-          otherButton.classList.remove("playing");
-          otherButton.textContent = "Hören";
+
+          otherButton.classList.remove(
+            "playing"
+          );
+
+          otherButton.textContent =
+            "Hören";
+
         }
 
       });
 
 
-      /* Aktuelles Audio starten oder stoppen */
+      /*
+       * aktuelles Audio
+       */
 
       if (audio.paused) {
 
         audio.play();
 
-        button.classList.add("playing");
-        button.textContent = "Stop";
+        button.classList.add(
+          "playing"
+        );
+
+        button.textContent =
+          "Pause";
 
       } else {
 
         audio.pause();
 
-        button.classList.remove("playing");
-        button.textContent = "Hören";
+        button.classList.remove(
+          "playing"
+        );
+
+        button.textContent =
+          "Hören";
 
       }
-
-
-      /* Nach Ende zurücksetzen */
-
-      audio.onended = () => {
-
-        button.classList.remove("playing");
-        button.textContent = "Hören";
-
-      };
 
     });
 
   });
 
+
+  /*
+   * ±10 SEKUNDEN
+   */
+
+  skipButtons.forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const audio =
+        document.getElementById(
+          button.dataset.audio
+        );
+
+
+      if (
+        button.classList.contains("back")
+      ) {
+
+        audio.currentTime =
+          Math.max(
+            0,
+            audio.currentTime - 10
+          );
+
+      }
+
+
+      if (
+        button.classList.contains("forward")
+      ) {
+
+        audio.currentTime =
+          Math.min(
+            audio.duration || Infinity,
+            audio.currentTime + 10
+          );
+
+      }
+
+    });
+
+  });
+
+
+  /*
+   * TIMELINES
+   */
+
+  timelines.forEach(timeline => {
+
+    const id =
+      timeline.dataset.audio;
+
+    const audio =
+      document.getElementById(id);
+
+    const currentTime =
+      document.querySelector(
+        `.current-time[data-audio="${id}"]`
+      );
+
+    const duration =
+      document.querySelector(
+        `.duration[data-audio="${id}"]`
+      );
+
+    const playButton =
+      document.querySelector(
+        `.play[data-audio="${id}"]`
+      );
+
+
+    /*
+     * Audiodauer laden
+     */
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        timeline.max =
+          audio.duration;
+
+        duration.textContent =
+          formatTime(
+            audio.duration
+          );
+
+      }
+    );
+
+
+    /*
+     * Fortschritt aktualisieren
+     */
+
+    audio.addEventListener(
+      "timeupdate",
+      () => {
+
+        timeline.value =
+          audio.currentTime;
+
+        currentTime.textContent =
+          formatTime(
+            audio.currentTime
+          );
+
+      }
+    );
+
+
+    /*
+     * Zeitleiste manuell bewegen
+     */
+
+    timeline.addEventListener(
+      "input",
+      () => {
+
+        audio.currentTime =
+          Number(
+            timeline.value
+          );
+
+      }
+    );
+
+
+    /*
+     * Audio fertig
+     */
+
+    audio.addEventListener(
+      "ended",
+      () => {
+
+        playButton.classList.remove(
+          "playing"
+        );
+
+        playButton.textContent =
+          "Hören";
+
+        timeline.value = 0;
+
+        currentTime.textContent =
+          "0:00";
+
+      }
+    );
+
+  });
+
 </script>
+
 
 </body>
 </html>
