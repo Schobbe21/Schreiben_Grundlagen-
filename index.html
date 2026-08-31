@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Wer ist es?</title>
+  <title>Schreiben · Grundlagen</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,1049 +30,189 @@
     .page {
       width: min(1200px, 92vw);
       margin: 0 auto;
-      padding: 60px 0 90px;
+      padding: 55px 0 70px;
     }
-
-
-    /* =========================
-       HEADER
-    ========================= */
 
     .header {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      min-height: 430px;
+      min-height: 350px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 42px;
       border-bottom: 1px solid #111;
-      margin-bottom: 70px;
     }
 
-    .title {
-      grid-column: 1 / 6;
-      align-self: start;
-
+    h1 {
       margin: 0;
-
       font-family: "Oswald", sans-serif;
-      font-size: clamp(85px, 13vw, 180px);
+      font-size: clamp(78px, 11vw, 155px);
       font-weight: 700;
-      line-height: .86;
-      letter-spacing: -.035em;
+      line-height: .82;
+      letter-spacing: -.045em;
       text-transform: uppercase;
     }
 
     .intro {
-      grid-column: 8 / 13;
-      align-self: end;
-      padding-bottom: 42px;
-
-      font-size: 16px;
+      max-width: 620px;
+      margin: 45px 0 70px;
+      font-size: 17px;
       line-height: 1.7;
     }
 
-    .intro strong {
-      font-family: "Oswald", sans-serif;
-      text-transform: uppercase;
-      font-size: 24px;
-      letter-spacing: .02em;
-    }
-
-
-    /* =========================
-       GRID
-    ========================= */
-
-    .people {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      column-gap: 22px;
-      row-gap: 90px;
-    }
-
-    .person {
-      position: relative;
-      padding-top: 20px;
+    .course {
       border-top: 1px solid #111;
     }
 
-    .person:nth-child(1) {
-      grid-column: 1 / 7;
-    }
-
-    .person:nth-child(2) {
-      grid-column: 8 / 13;
-      margin-top: 110px;
-    }
-
-    .person:nth-child(3) {
-      grid-column: 2 / 7;
-    }
-
-    .person:nth-child(4) {
-      grid-column: 7 / 13;
-      margin-top: 70px;
-    }
-
-    .person:nth-child(5) {
-      grid-column: 1 / 6;
-    }
-
-    .person:nth-child(6) {
-      grid-column: 7 / 12;
-      margin-top: 110px;
-    }
-
-
-    /* =========================
-       PORTRÄTS
-    ========================= */
-
-    .portrait {
-      display: block;
-
-      width: 100%;
-      height: 350px;
-
-      margin-bottom: 26px;
-
-      object-fit: cover;
-      object-position: center center;
-
-      filter: grayscale(100%);
-    }
-
-    .person:nth-child(1) .portrait {
-      height: 390px;
-    }
-
-    .person:nth-child(2) .portrait {
-      height: 330px;
-    }
-
     /*
-      Lena:
-      Bildinhalt etwas nach unten verschieben,
-      damit oben mehr vom Kopf sichtbar bleibt.
+      Der gesamte Eintrag ist ein Link.
+      Dadurch kann man nicht nur auf den Text,
+      sondern auf die komplette Zeile klicken.
     */
 
-    .person:nth-child(3) .portrait {
-      height: 350px;
-      object-position: center 35%;
+    .item {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 30px;
+      align-items: baseline;
+
+      padding: 25px 0;
+      border-bottom: 1px solid #111;
+
+      color: inherit;
+      text-decoration: none;
+
+      transition:
+        padding-left .18s ease,
+        background-color .18s ease;
     }
 
-    .person:nth-child(4) .portrait {
-      height: 370px;
+    .item:hover {
+      padding-left: 14px;
+      background: rgba(0, 0, 0, .035);
     }
-
-    .person:nth-child(5) .portrait {
-      height: 350px;
-    }
-
-    /*
-      Pamela:
-      ebenfalls etwas tiefer positionieren.
-    */
-
-    .person:nth-child(6) .portrait {
-      height: 370px;
-      object-position: center 35%;
-    }
-
-
-    /* =========================
-       TYPOGRAFIE
-    ========================= */
 
     .number {
-      margin-bottom: 20px;
-
-      font-family: "Oswald", sans-serif;
-      font-size: 92px;
-      font-weight: 700;
-      line-height: .85;
+      font-family: "Libre Baskerville", serif;
+      font-size: 48px;
+      line-height: 1;
     }
 
-    .name {
-      margin: 0;
-
+    .topic {
       font-family: "Oswald", sans-serif;
-      font-size: clamp(42px, 6vw, 78px);
+      font-size: clamp(27px, 4vw, 48px);
       font-weight: 600;
-      line-height: .95;
-
+      line-height: 1;
       text-transform: uppercase;
     }
 
-
-    /* =========================
-       AUDIO PLAYER
-    ========================= */
-
-    .audio-controls {
-      margin-top: 28px;
-
-      display: grid;
-      grid-template-columns: 95px 1fr 95px;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .audio-controls button {
-      height: 56px;
-
-      border: 2px solid #111;
-      background: transparent;
-      color: #111;
-
-      font-family: "Oswald", sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: .03em;
-
-      cursor: pointer;
-    }
-
-    .audio-controls button:hover {
-      background: #111;
-      color: #f4f1e9;
-    }
-
-    .play {
-      font-size: 18px !important;
-      text-transform: uppercase;
-      letter-spacing: .06em !important;
-    }
-
-    .play::before {
-      content: "▶";
-      margin-right: 10px;
-    }
-
-    .play.playing::before {
-      content: "■";
-    }
-
-
-    /* =========================
-       ZEITLEISTE
-    ========================= */
-
-    .timeline {
-      grid-column: 1 / -1;
-
-      width: 100%;
-      height: 5px;
-
-      margin-top: 14px;
-
-      appearance: none;
-      -webkit-appearance: none;
-
-      background: rgba(17,17,17,.30);
-
-      cursor: pointer;
-    }
-
-    .timeline::-webkit-slider-thumb {
-      appearance: none;
-      -webkit-appearance: none;
-
-      width: 20px;
-      height: 20px;
-
-      border: 2px solid #111;
-      border-radius: 50%;
-
-      background: #f4f1e9;
-
-      cursor: pointer;
-    }
-
-    .timeline::-moz-range-thumb {
-      width: 18px;
-      height: 18px;
-
-      border: 2px solid #111;
-      border-radius: 50%;
-
-      background: #f4f1e9;
-
-      cursor: pointer;
-    }
-
-    .time-row {
-      grid-column: 1 / -1;
+    footer {
+      margin-top: 70px;
+      padding-top: 15px;
+      border-top: 1px solid #111;
 
       display: flex;
       justify-content: space-between;
 
-      margin-top: -4px;
-
       font-family: "Oswald", sans-serif;
-      font-size: 14px;
-    }
-
-    audio {
-      display: none;
-    }
-
-
-    /* =========================
-       FOOTER
-    ========================= */
-
-    .footer {
-      margin-top: 110px;
-      padding-top: 20px;
-
-      border-top: 1px solid #111;
-
-      font-family: "Oswald", sans-serif;
-      font-size: 13px;
-      letter-spacing: .12em;
-
+      font-size: 12px;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
 
-
-    /* =========================
-       MOBILE
-    ========================= */
-
-    @media (max-width: 700px) {
+    @media (max-width: 600px) {
 
       .page {
         padding-top: 35px;
       }
 
       .header {
-        display: block;
-        min-height: auto;
-        padding-bottom: 35px;
+        min-height: 270px;
       }
 
-      .title {
-        margin-bottom: 70px;
-      }
-
-      .intro {
-        max-width: 420px;
-      }
-
-      .people {
-        display: block;
-      }
-
-      .person,
-      .person:nth-child(n) {
-        margin: 0 0 90px;
-      }
-
-      .portrait,
-      .person:nth-child(n) .portrait {
-        height: min(105vw, 500px);
-      }
-
-      /*
-        Lena + Pamela auch auf Handy
-        etwas günstiger positionieren.
-      */
-
-      .person:nth-child(3) .portrait,
-      .person:nth-child(6) .portrait {
-        object-position: center 35%;
+      .item {
+        grid-template-columns: 60px 1fr;
+        gap: 18px;
       }
 
       .number {
-        font-size: 70px;
+        font-size: 34px;
       }
 
-      .audio-controls {
-        grid-template-columns: 78px 1fr 78px;
-        gap: 8px;
+      .item:hover {
+        padding-left: 0;
       }
 
-      .audio-controls button {
-        height: 52px;
-        font-size: 14px;
-      }
-
-      .play {
-        font-size: 16px !important;
-      }
     }
 
   </style>
 </head>
 
-
 <body>
 
 <main class="page">
 
-
-  <!-- HEADER -->
-
   <header class="header">
 
-    <h1 class="title">
-      Wer<br>
-      ist<br>
-      es?
+    <h1>
+      Schreiben<br>
+      Grundlagen
     </h1>
-
-    <div class="intro">
-
-      <strong>Hört genau hin.</strong>
-
-      <p>
-        Hört euch die sechs Selbstvorstellungen an
-        und ergänzt die fehlenden Informationen
-        auf eurem Arbeitsblatt.
-      </p>
-
-    </div>
 
   </header>
 
 
+  <div class="intro">
 
-  <!-- PERSONEN -->
+    In diesem Kurs beschäftigen wir uns mit verschiedenen
+    grundlegenden Textsorten des Deutschen. Im Mittelpunkt
+    stehen Aufbau, sprachliche Gestaltung und die praktische
+    Anwendung beim Schreiben.
 
-  <section class="people">
+  </div>
 
 
-    <!-- 01 JÜRGEN -->
+  <section class="course">
 
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="JK.jpg"
-        alt="Jürgen"
-      >
-
+    <a class="item" href="01-selbstvorstellung/">
       <div class="number">01</div>
+      <div class="topic">Selbstvorstellung</div>
+    </a>
 
-      <h2 class="name">Jürgen</h2>
-
-      <div class="audio-controls">
-
-        <button
-          class="skip back"
-          data-audio="juergen"
-        >
-          −10 s
-        </button>
-
-        <button
-          class="play"
-          data-audio="juergen"
-        >
-          Hören
-        </button>
-
-        <button
-          class="skip forward"
-          data-audio="juergen"
-        >
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="juergen"
-        >
-
-        <div class="time-row">
-          <span
-            class="current-time"
-            data-audio="juergen"
-          >
-            0:00
-          </span>
-
-          <span
-            class="duration"
-            data-audio="juergen"
-          >
-            0:00
-          </span>
-        </div>
-
-      </div>
-
-      <audio
-        id="juergen"
-        src="Juergen.mp3"
-      ></audio>
-
-    </article>
-
-
-
-    <!-- 02 ANKE -->
-
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="AE.jpg"
-        alt="Anke"
-      >
-
+    <a class="item" href="02-einladung/">
       <div class="number">02</div>
+      <div class="topic">Einladung</div>
+    </a>
 
-      <h2 class="name">Anke</h2>
-
-      <div class="audio-controls">
-
-        <button class="skip back" data-audio="anke">
-          −10 s
-        </button>
-
-        <button class="play" data-audio="anke">
-          Hören
-        </button>
-
-        <button class="skip forward" data-audio="anke">
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="anke"
-        >
-
-        <div class="time-row">
-          <span class="current-time" data-audio="anke">0:00</span>
-          <span class="duration" data-audio="anke">0:00</span>
-        </div>
-
-      </div>
-
-      <audio
-        id="anke"
-        src="Anke.mp3"
-      ></audio>
-
-    </article>
-
-
-
-    <!-- 03 LENA -->
-
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="LML.jpg"
-        alt="Lena"
-      >
-
+    <a class="item" href="03-wegbeschreibung/">
       <div class="number">03</div>
+      <div class="topic">Wegbeschreibung</div>
+    </a>
 
-      <h2 class="name">Lena</h2>
-
-      <div class="audio-controls">
-
-        <button class="skip back" data-audio="lena">
-          −10 s
-        </button>
-
-        <button class="play" data-audio="lena">
-          Hören
-        </button>
-
-        <button class="skip forward" data-audio="lena">
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="lena"
-        >
-
-        <div class="time-row">
-          <span class="current-time" data-audio="lena">0:00</span>
-          <span class="duration" data-audio="lena">0:00</span>
-        </div>
-
-      </div>
-
-      <audio
-        id="lena"
-        src="Lena.mp3"
-      ></audio>
-
-    </article>
-
-
-
-    <!-- 04 MARCEL -->
-
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="MoB.jpg"
-        alt="Marcel"
-      >
-
+    <a class="item" href="04-gegenstandsbeschreibung/">
       <div class="number">04</div>
+      <div class="topic">Gegenstandsbeschreibung</div>
+    </a>
 
-      <h2 class="name">Marcel</h2>
-
-      <div class="audio-controls">
-
-        <button class="skip back" data-audio="marcel">
-          −10 s
-        </button>
-
-        <button class="play" data-audio="marcel">
-          Hören
-        </button>
-
-        <button class="skip forward" data-audio="marcel">
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="marcel"
-        >
-
-        <div class="time-row">
-          <span class="current-time" data-audio="marcel">0:00</span>
-          <span class="duration" data-audio="marcel">0:00</span>
-        </div>
-
-      </div>
-
-      <audio
-        id="marcel"
-        src="Marcel.mp3"
-      ></audio>
-
-    </article>
-
-
-
-    <!-- 05 ELYAS -->
-
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="MB.jpg"
-        alt="Elyas"
-      >
-
+    <a class="item" href="05-personenbeschreibung/">
       <div class="number">05</div>
+      <div class="topic">Personenbeschreibung</div>
+    </a>
 
-      <h2 class="name">Elyas</h2>
-
-      <div class="audio-controls">
-
-        <button class="skip back" data-audio="elyas">
-          −10 s
-        </button>
-
-        <button class="play" data-audio="elyas">
-          Hören
-        </button>
-
-        <button class="skip forward" data-audio="elyas">
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="elyas"
-        >
-
-        <div class="time-row">
-          <span class="current-time" data-audio="elyas">0:00</span>
-          <span class="duration" data-audio="elyas">0:00</span>
-        </div>
-
-      </div>
-
-      <audio
-        id="elyas"
-        src="Elyas.mp3"
-      ></audio>
-
-    </article>
-
-
-
-    <!-- 06 PAMELA -->
-
-    <article class="person">
-
-      <img
-        class="portrait"
-        src="PR.jpg"
-        alt="Pamela"
-      >
-
+    <a class="item" href="06-bildergeschichte/">
       <div class="number">06</div>
-
-      <h2 class="name">Pamela</h2>
-
-      <div class="audio-controls">
-
-        <button class="skip back" data-audio="pamela">
-          −10 s
-        </button>
-
-        <button class="play" data-audio="pamela">
-          Hören
-        </button>
-
-        <button class="skip forward" data-audio="pamela">
-          +10 s
-        </button>
-
-        <input
-          class="timeline"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          step="0.1"
-          data-audio="pamela"
-        >
-
-        <div class="time-row">
-          <span class="current-time" data-audio="pamela">0:00</span>
-          <span class="duration" data-audio="pamela">0:00</span>
-        </div>
-
-      </div>
-
-      <audio
-        id="pamela"
-        src="Pamela.mp3"
-      ></audio>
-
-    </article>
-
+      <div class="topic">Bildergeschichte</div>
+    </a>
 
   </section>
 
 
-  <footer class="footer">
-    Deutsch · Schreibkurs · Selbstvorstellung
+  <footer>
+
+    <span>Deutsch · Schreibkurs</span>
+    <span>SZTU</span>
+
   </footer>
 
 </main>
-
-
-
-<script>
-
-  const buttons =
-    document.querySelectorAll(".play");
-
-  const audios =
-    document.querySelectorAll("audio");
-
-  const skipButtons =
-    document.querySelectorAll(".skip");
-
-  const timelines =
-    document.querySelectorAll(".timeline");
-
-
-  /*
-   * Zeit in m:ss umwandeln
-   */
-
-  function formatTime(seconds) {
-
-    if (!Number.isFinite(seconds)) {
-      return "0:00";
-    }
-
-    const minutes =
-      Math.floor(seconds / 60);
-
-    const secs =
-      Math.floor(seconds % 60);
-
-    return (
-      minutes +
-      ":" +
-      secs.toString().padStart(2, "0")
-    );
-  }
-
-
-  /*
-   * PLAY / PAUSE
-   */
-
-  buttons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      const audio =
-        document.getElementById(
-          button.dataset.audio
-        );
-
-
-      /*
-       * Andere Audios stoppen
-       */
-
-      audios.forEach(otherAudio => {
-
-        if (otherAudio !== audio) {
-
-          otherAudio.pause();
-          otherAudio.currentTime = 0;
-
-        }
-
-      });
-
-
-      /*
-       * Andere Play-Buttons zurücksetzen
-       */
-
-      buttons.forEach(otherButton => {
-
-        if (otherButton !== button) {
-
-          otherButton.classList.remove(
-            "playing"
-          );
-
-          otherButton.textContent =
-            "Hören";
-
-        }
-
-      });
-
-
-      /*
-       * aktuelles Audio
-       */
-
-      if (audio.paused) {
-
-        audio.play();
-
-        button.classList.add(
-          "playing"
-        );
-
-        button.textContent =
-          "Pause";
-
-      } else {
-
-        audio.pause();
-
-        button.classList.remove(
-          "playing"
-        );
-
-        button.textContent =
-          "Hören";
-
-      }
-
-    });
-
-  });
-
-
-  /*
-   * ±10 SEKUNDEN
-   */
-
-  skipButtons.forEach(button => {
-
-    button.addEventListener("click", () => {
-
-      const audio =
-        document.getElementById(
-          button.dataset.audio
-        );
-
-
-      if (
-        button.classList.contains("back")
-      ) {
-
-        audio.currentTime =
-          Math.max(
-            0,
-            audio.currentTime - 10
-          );
-
-      }
-
-
-      if (
-        button.classList.contains("forward")
-      ) {
-
-        audio.currentTime =
-          Math.min(
-            audio.duration || Infinity,
-            audio.currentTime + 10
-          );
-
-      }
-
-    });
-
-  });
-
-
-  /*
-   * TIMELINES
-   */
-
-  timelines.forEach(timeline => {
-
-    const id =
-      timeline.dataset.audio;
-
-    const audio =
-      document.getElementById(id);
-
-    const currentTime =
-      document.querySelector(
-        `.current-time[data-audio="${id}"]`
-      );
-
-    const duration =
-      document.querySelector(
-        `.duration[data-audio="${id}"]`
-      );
-
-    const playButton =
-      document.querySelector(
-        `.play[data-audio="${id}"]`
-      );
-
-
-    /*
-     * Audiodauer laden
-     */
-
-    audio.addEventListener(
-      "loadedmetadata",
-      () => {
-
-        timeline.max =
-          audio.duration;
-
-        duration.textContent =
-          formatTime(
-            audio.duration
-          );
-
-      }
-    );
-
-
-    /*
-     * Fortschritt aktualisieren
-     */
-
-    audio.addEventListener(
-      "timeupdate",
-      () => {
-
-        timeline.value =
-          audio.currentTime;
-
-        currentTime.textContent =
-          formatTime(
-            audio.currentTime
-          );
-
-      }
-    );
-
-
-    /*
-     * Zeitleiste manuell bewegen
-     */
-
-    timeline.addEventListener(
-      "input",
-      () => {
-
-        audio.currentTime =
-          Number(
-            timeline.value
-          );
-
-      }
-    );
-
-
-    /*
-     * Audio fertig
-     */
-
-    audio.addEventListener(
-      "ended",
-      () => {
-
-        playButton.classList.remove(
-          "playing"
-        );
-
-        playButton.textContent =
-          "Hören";
-
-        timeline.value = 0;
-
-        currentTime.textContent =
-          "0:00";
-
-      }
-    );
-
-  });
-
-</script>
-
 
 </body>
 </html>
