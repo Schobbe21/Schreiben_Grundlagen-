@@ -33,7 +33,6 @@
       padding: 42px 0 60px;
     }
 
-
     /* =========================
        HEADER
     ========================= */
@@ -43,15 +42,12 @@
       grid-template-columns: repeat(12, 1fr);
       min-height: 330px;
       position: relative;
-
       padding-bottom: 45px;
-
       border-bottom: 1px solid #111;
     }
 
     .title {
       grid-column: 1 / 7;
-
       margin: 0;
 
       font-family: "Oswald", sans-serif;
@@ -65,7 +61,6 @@
     .chapter {
       grid-column: 10 / 13;
       align-self: end;
-
       text-align: right;
       padding-bottom: 10px;
     }
@@ -86,7 +81,6 @@
       text-transform: uppercase;
     }
 
-
     /* =========================
        MAIN SPREAD
     ========================= */
@@ -95,11 +89,10 @@
       display: grid;
       grid-template-columns:
         minmax(0, 2.25fr)
-        minmax(260px, .75fr);
+        minmax(320px, .75fr);
 
       border-bottom: 1px solid #111;
     }
-
 
     /* =========================
        MAP
@@ -142,7 +135,6 @@
       height: auto;
     }
 
-
     /* =========================
        PEOPLE
     ========================= */
@@ -154,9 +146,9 @@
 
     .person {
       display: grid;
-      grid-template-columns: 44% 56%;
+      grid-template-columns: 40% 60%;
 
-      min-height: 245px;
+      min-height: 300px;
 
       border-bottom: 1px solid #111;
     }
@@ -171,7 +163,6 @@
 
     .portrait img {
       display: block;
-
       width: 100%;
       height: 100%;
 
@@ -184,6 +175,7 @@
     }
 
     /* Harry: Bildausschnitt weiter nach rechts */
+
     .person:nth-child(3) .portrait img {
       object-position: 100% center;
     }
@@ -191,9 +183,8 @@
     .person-info {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
 
-      padding: 22px 18px;
+      padding: 20px 16px;
     }
 
     .person-number {
@@ -203,55 +194,124 @@
     }
 
     .name {
-      margin: auto 0 18px;
+      margin: 18px 0 20px;
 
       font-family: "Oswald", sans-serif;
-      font-size: clamp(32px, 3vw, 48px);
+      font-size: clamp(30px, 3vw, 46px);
       font-weight: 600;
       line-height: .95;
       text-transform: uppercase;
     }
 
-
     /* =========================
-       AUDIO BUTTON
+       AUDIO CONTROLS
     ========================= */
 
-    .play {
-      padding: 0;
+    .audio-controls {
+      margin-top: auto;
 
-      border: none;
-      background: none;
+      display: grid;
+      grid-template-columns: 68px 1fr 68px;
+      gap: 7px;
+      align-items: center;
+    }
 
+    .audio-controls button {
+      height: 44px;
+
+      border: 1.5px solid #111;
+      background: transparent;
       color: #111;
 
       font-family: "Oswald", sans-serif;
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: .07em;
-      text-transform: uppercase;
+      letter-spacing: .02em;
 
-      text-align: left;
       cursor: pointer;
+    }
+
+    .audio-controls button:hover {
+      background: #111;
+      color: #f4f1e9;
+    }
+
+    .play {
+      font-size: 14px !important;
+      text-transform: uppercase;
+      letter-spacing: .04em !important;
     }
 
     .play::before {
       content: "▶";
-      margin-right: 9px;
+      margin-right: 7px;
     }
 
     .play.playing::before {
       content: "■";
     }
 
-    .play:hover {
-      font-style: italic;
+    /* =========================
+       TIMELINE
+    ========================= */
+
+    .timeline {
+      grid-column: 1 / -1;
+
+      width: 100%;
+      height: 4px;
+
+      margin-top: 10px;
+
+      appearance: none;
+      -webkit-appearance: none;
+
+      background: rgba(17,17,17,.30);
+      cursor: pointer;
+    }
+
+    .timeline::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+
+      width: 16px;
+      height: 16px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .timeline::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+
+      border: 2px solid #111;
+      border-radius: 50%;
+
+      background: #f4f1e9;
+
+      cursor: pointer;
+    }
+
+    .time-row {
+      grid-column: 1 / -1;
+
+      display: flex;
+      justify-content: space-between;
+
+      margin-top: -2px;
+
+      font-family: "Oswald", sans-serif;
+      font-size: 12px;
     }
 
     audio {
       display: none;
     }
-
 
     /* =========================
        FOOTER
@@ -272,7 +332,6 @@
       letter-spacing: .1em;
       text-transform: uppercase;
     }
-
 
     /* =========================
        TABLET
@@ -307,17 +366,16 @@
 
       .map-section {
         padding: 25px 0 35px;
-
         border-right: none;
         border-bottom: 1px solid #111;
       }
 
       .person {
-        min-height: 220px;
-        grid-template-columns: 40% 60%;
+        min-height: 260px;
+        grid-template-columns: 38% 62%;
       }
-    }
 
+    }
 
     /* =========================
        MOBILE
@@ -327,7 +385,6 @@
 
       .header {
         display: block;
-
         min-height: auto;
         padding-bottom: 35px;
       }
@@ -346,13 +403,28 @@
       }
 
       .person {
-        grid-template-columns: 45% 55%;
-        min-height: 190px;
+        grid-template-columns: 42% 58%;
+        min-height: 240px;
       }
 
       .name {
-        font-size: 32px;
+        font-size: 29px;
       }
+
+      .audio-controls {
+        grid-template-columns: 55px 1fr 55px;
+        gap: 5px;
+      }
+
+      .audio-controls button {
+        height: 42px;
+        font-size: 11px;
+      }
+
+      .play {
+        font-size: 12px !important;
+      }
+
     }
 
   </style>
@@ -376,6 +448,7 @@
 
     <div class="chapter">
       <div class="chapter-number">03</div>
+
       <div class="chapter-name">
         Wegbeschreibung
       </div>
@@ -395,16 +468,19 @@
 
       <div class="map-label">
         <strong>Stadtplan</strong>
+
         <span>
           Hören · Orientieren · Einzeichnen
         </span>
       </div>
 
       <div class="map-frame">
+
         <img
           src="Stadtplan_redo.png"
           alt="Stadtplan für die Wegbeschreibung"
         >
+
       </div>
 
     </div>
@@ -436,13 +512,61 @@
             Abe
           </h2>
 
-          <button
-            class="play"
-            type="button"
-            data-audio="abe"
-          >
-            Hören
-          </button>
+          <div class="audio-controls">
+
+            <button
+              class="skip back"
+              type="button"
+              data-audio="abe"
+            >
+              −10 s
+            </button>
+
+            <button
+              class="play"
+              type="button"
+              data-audio="abe"
+            >
+              Hören
+            </button>
+
+            <button
+              class="skip forward"
+              type="button"
+              data-audio="abe"
+            >
+              +10 s
+            </button>
+
+            <input
+              class="timeline"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              data-audio="abe"
+            >
+
+            <div class="time-row">
+
+              <span
+                class="current-time"
+                data-audio="abe"
+              >
+                0:00
+              </span>
+
+              <span
+                class="duration"
+                data-audio="abe"
+              >
+                0:00
+              </span>
+
+            </div>
+
+          </div>
 
           <audio
             id="abe"
@@ -460,10 +584,12 @@
       <article class="person">
 
         <div class="portrait">
+
           <img
             src="Emma.jpg"
             alt="Emma"
           >
+
         </div>
 
         <div class="person-info">
@@ -476,13 +602,61 @@
             Emma
           </h2>
 
-          <button
-            class="play"
-            type="button"
-            data-audio="emma"
-          >
-            Hören
-          </button>
+          <div class="audio-controls">
+
+            <button
+              class="skip back"
+              type="button"
+              data-audio="emma"
+            >
+              −10 s
+            </button>
+
+            <button
+              class="play"
+              type="button"
+              data-audio="emma"
+            >
+              Hören
+            </button>
+
+            <button
+              class="skip forward"
+              type="button"
+              data-audio="emma"
+            >
+              +10 s
+            </button>
+
+            <input
+              class="timeline"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              data-audio="emma"
+            >
+
+            <div class="time-row">
+
+              <span
+                class="current-time"
+                data-audio="emma"
+              >
+                0:00
+              </span>
+
+              <span
+                class="duration"
+                data-audio="emma"
+              >
+                0:00
+              </span>
+
+            </div>
+
+          </div>
 
           <audio
             id="emma"
@@ -500,10 +674,12 @@
       <article class="person">
 
         <div class="portrait">
+
           <img
             src="Harry.jpg"
             alt="Harry"
           >
+
         </div>
 
         <div class="person-info">
@@ -516,13 +692,61 @@
             Harry
           </h2>
 
-          <button
-            class="play"
-            type="button"
-            data-audio="harry"
-          >
-            Hören
-          </button>
+          <div class="audio-controls">
+
+            <button
+              class="skip back"
+              type="button"
+              data-audio="harry"
+            >
+              −10 s
+            </button>
+
+            <button
+              class="play"
+              type="button"
+              data-audio="harry"
+            >
+              Hören
+            </button>
+
+            <button
+              class="skip forward"
+              type="button"
+              data-audio="harry"
+            >
+              +10 s
+            </button>
+
+            <input
+              class="timeline"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              step="0.1"
+              data-audio="harry"
+            >
+
+            <div class="time-row">
+
+              <span
+                class="current-time"
+                data-audio="harry"
+              >
+                0:00
+              </span>
+
+              <span
+                class="duration"
+                data-audio="harry"
+              >
+                0:00
+              </span>
+
+            </div>
+
+          </div>
 
           <audio
             id="harry"
@@ -566,6 +790,41 @@
   const audios =
     document.querySelectorAll("audio");
 
+  const skipButtons =
+    document.querySelectorAll(".skip");
+
+  const timelines =
+    document.querySelectorAll(".timeline");
+
+
+  /* =========================
+     ZEIT FORMATIEREN
+  ========================= */
+
+  function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) {
+      return "0:00";
+    }
+
+    const minutes =
+      Math.floor(seconds / 60);
+
+    const secs =
+      Math.floor(seconds % 60);
+
+    return (
+      minutes +
+      ":" +
+      secs.toString().padStart(2, "0")
+    );
+
+  }
+
+
+  /* =========================
+     PLAY / PAUSE
+  ========================= */
 
   buttons.forEach(button => {
 
@@ -588,8 +847,10 @@
         audios.forEach(otherAudio => {
 
           if (otherAudio !== audio) {
+
             otherAudio.pause();
             otherAudio.currentTime = 0;
+
           }
 
         });
@@ -600,12 +861,14 @@
         buttons.forEach(otherButton => {
 
           if (otherButton !== button) {
+
             otherButton.classList.remove(
               "playing"
             );
 
             otherButton.textContent =
               "Hören";
+
           }
 
         });
@@ -624,7 +887,7 @@
             );
 
             button.textContent =
-              "Stop";
+              "Pause";
 
           } catch (error) {
 
@@ -651,31 +914,159 @@
       }
     );
 
+  });
 
-    /* Passendes Audio */
 
-    const audio =
-      document.getElementById(
-        button.dataset.audio
-      );
+  /* =========================
+     ±10 SEKUNDEN
+  ========================= */
 
-    if (audio) {
+  skipButtons.forEach(button => {
 
-      audio.addEventListener(
-        "ended",
-        () => {
+    button.addEventListener(
+      "click",
+      () => {
 
-          button.classList.remove(
-            "playing"
+        const audio =
+          document.getElementById(
+            button.dataset.audio
           );
 
-          button.textContent =
-            "Hören";
+        if (!audio) {
+          return;
+        }
+
+
+        if (
+          button.classList.contains("back")
+        ) {
+
+          audio.currentTime =
+            Math.max(
+              0,
+              audio.currentTime - 10
+            );
 
         }
+
+
+        if (
+          button.classList.contains("forward")
+        ) {
+
+          audio.currentTime =
+            Math.min(
+              audio.duration || Infinity,
+              audio.currentTime + 10
+            );
+
+        }
+
+      }
+    );
+
+  });
+
+
+  /* =========================
+     ZEITLEISTEN
+  ========================= */
+
+  timelines.forEach(timeline => {
+
+    const id =
+      timeline.dataset.audio;
+
+    const audio =
+      document.getElementById(id);
+
+    const currentTime =
+      document.querySelector(
+        `.current-time[data-audio="${id}"]`
       );
 
-    }
+    const duration =
+      document.querySelector(
+        `.duration[data-audio="${id}"]`
+      );
+
+    const playButton =
+      document.querySelector(
+        `.play[data-audio="${id}"]`
+      );
+
+
+    /* Dauer laden */
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        timeline.max =
+          audio.duration;
+
+        duration.textContent =
+          formatTime(
+            audio.duration
+          );
+
+      }
+    );
+
+
+    /* Fortschritt */
+
+    audio.addEventListener(
+      "timeupdate",
+      () => {
+
+        timeline.value =
+          audio.currentTime;
+
+        currentTime.textContent =
+          formatTime(
+            audio.currentTime
+          );
+
+      }
+    );
+
+
+    /* Manuell springen */
+
+    timeline.addEventListener(
+      "input",
+      () => {
+
+        audio.currentTime =
+          Number(
+            timeline.value
+          );
+
+      }
+    );
+
+
+    /* Ende */
+
+    audio.addEventListener(
+      "ended",
+      () => {
+
+        playButton.classList.remove(
+          "playing"
+        );
+
+        playButton.textContent =
+          "Hören";
+
+        timeline.value = 0;
+
+        currentTime.textContent =
+          "0:00";
+
+      }
+    );
 
   });
 
