@@ -8,7 +8,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital@0;1&family=Oswald:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
 
@@ -29,25 +32,28 @@
       padding: 60px 0 90px;
     }
 
+    /* -------------------------
+       HEADER
+    ------------------------- */
+
     .header {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       min-height: 430px;
       border-bottom: 1px solid #111;
-      margin-bottom: 55px;
+      margin-bottom: 70px;
     }
 
     .title {
       grid-column: 1 / 6;
       align-self: start;
-
       margin: 0;
 
       font-family: "Oswald", sans-serif;
       font-size: clamp(85px, 13vw, 180px);
       font-weight: 700;
-      line-height: 0.86;
-      letter-spacing: -0.035em;
+      line-height: .86;
+      letter-spacing: -.035em;
       text-transform: uppercase;
     }
 
@@ -55,6 +61,7 @@
       grid-column: 8 / 13;
       align-self: end;
       padding-bottom: 42px;
+
       font-size: 16px;
       line-height: 1.7;
     }
@@ -66,19 +73,25 @@
       letter-spacing: .02em;
     }
 
+
+    /* -------------------------
+       PERSONEN
+    ------------------------- */
+
     .people {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       column-gap: 22px;
-      row-gap: 70px;
+      row-gap: 90px;
     }
 
     .person {
       position: relative;
-      min-height: 200px;
       padding-top: 20px;
       border-top: 1px solid #111;
     }
+
+    /* asymmetrische Positionen */
 
     .person:nth-child(1) {
       grid-column: 1 / 7;
@@ -86,20 +99,20 @@
 
     .person:nth-child(2) {
       grid-column: 8 / 13;
-      margin-top: 100px;
+      margin-top: 110px;
     }
 
     .person:nth-child(3) {
-      grid-column: 2 / 6;
+      grid-column: 2 / 7;
     }
 
     .person:nth-child(4) {
       grid-column: 7 / 13;
-      margin-top: 60px;
+      margin-top: 70px;
     }
 
     .person:nth-child(5) {
-      grid-column: 1 / 5;
+      grid-column: 1 / 6;
     }
 
     .person:nth-child(6) {
@@ -107,12 +120,59 @@
       margin-top: 110px;
     }
 
+
+    /* -------------------------
+       BILDER
+    ------------------------- */
+
+    .portrait {
+      width: 100%;
+      height: 330px;
+
+      margin-bottom: 24px;
+
+      object-fit: cover;
+      object-position: center;
+
+      display: block;
+
+      filter: grayscale(100%);
+    }
+
+    /*
+      Kleine individuelle Anpassungen,
+      falls Gesichter unterschiedlich
+      im Bild positioniert sind.
+    */
+
+    .person:nth-child(1) .portrait {
+      height: 390px;
+    }
+
+    .person:nth-child(2) .portrait {
+      height: 310px;
+    }
+
+    .person:nth-child(4) .portrait {
+      height: 370px;
+    }
+
+    .person:nth-child(6) .portrait {
+      height: 350px;
+    }
+
+
+    /* -------------------------
+       TYPOGRAFIE
+    ------------------------- */
+
     .number {
       font-family: "Oswald", sans-serif;
       font-weight: 700;
       font-size: 92px;
       line-height: .85;
-      margin-bottom: 25px;
+
+      margin-bottom: 20px;
     }
 
     .name {
@@ -122,12 +182,19 @@
       font-size: clamp(42px, 6vw, 78px);
       font-weight: 600;
       line-height: .95;
+
       text-transform: uppercase;
     }
+
+
+    /* -------------------------
+       AUDIO
+    ------------------------- */
 
     .play {
       margin-top: 24px;
       padding: 0;
+
       border: none;
       background: none;
 
@@ -153,9 +220,19 @@
       content: "■";
     }
 
+    audio {
+      display: none;
+    }
+
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+
     .footer {
-      margin-top: 100px;
+      margin-top: 110px;
       padding-top: 20px;
+
       border-top: 1px solid #111;
 
       font-family: "Oswald", sans-serif;
@@ -164,11 +241,16 @@
       text-transform: uppercase;
     }
 
-    audio {
-      display: none;
-    }
+
+    /* -------------------------
+       MOBILE
+    ------------------------- */
 
     @media (max-width: 700px) {
+
+      .page {
+        padding-top: 35px;
+      }
 
       .header {
         display: block;
@@ -190,8 +272,12 @@
 
       .person,
       .person:nth-child(n) {
-        margin: 0 0 70px;
-        min-height: auto;
+        margin: 0 0 80px;
+      }
+
+      .portrait,
+      .person:nth-child(n) .portrait {
+        height: min(110vw, 500px);
       }
 
       .number {
@@ -202,9 +288,13 @@
   </style>
 </head>
 
+
 <body>
 
 <main class="page">
+
+
+  <!-- HEADER -->
 
   <header class="header">
 
@@ -215,68 +305,216 @@
     </h1>
 
     <div class="intro">
+
       <strong>Hört genau hin.</strong>
+
       <p>
         Hört euch die sechs Selbstvorstellungen an
         und ergänzt die fehlenden Informationen
         auf eurem Arbeitsblatt.
       </p>
+
     </div>
 
   </header>
 
 
+
+  <!-- PERSONEN -->
+
   <section class="people">
 
+
+    <!-- 01 JÜRGEN -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="JK.jpg"
+        alt="Jürgen"
+      >
+
       <div class="number">01</div>
+
       <h2 class="name">Jürgen</h2>
-      <button class="play" data-audio="juergen">Hören</button>
-  <audio id="juergen" src="Juergen.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="juergen"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="juergen"
+        src="Juergen.mp3"
+      ></audio>
+
     </article>
 
+
+
+    <!-- 02 ANKE -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="AE.jpg"
+        alt="Anke"
+      >
+
       <div class="number">02</div>
+
       <h2 class="name">Anke</h2>
-      <button class="play" data-audio="anke">Hören</button>
-      <audio id="anke" src="Anke.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="anke"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="anke"
+        src="Anke.mp3"
+      ></audio>
+
     </article>
 
+
+
+    <!-- 03 LENA -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="LML.jpg"
+        alt="Lena"
+      >
+
       <div class="number">03</div>
+
       <h2 class="name">Lena</h2>
-      <button class="play" data-audio="lena">Hören</button>
-      <audio id="lena" src="Lena.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="lena"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="lena"
+        src="Lena.mp3"
+      ></audio>
+
     </article>
 
+
+
+    <!-- 04 MARCEL -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="MB.jpg"
+        alt="Marcel"
+      >
+
       <div class="number">04</div>
+
       <h2 class="name">Marcel</h2>
-      <button class="play" data-audio="marcel">Hören</button>
-      <audio id="marcel" src="Marcel.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="marcel"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="marcel"
+        src="Marcel.mp3"
+      ></audio>
+
     </article>
 
+
+
+    <!-- 05 ELYAS -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="MoB.jpg"
+        alt="Elyas"
+      >
+
       <div class="number">05</div>
+
       <h2 class="name">Elyas</h2>
-      <button class="play" data-audio="elyas">Hören</button>
-      <audio id="elyas" src="Elyas.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="elyas"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="elyas"
+        src="Elyas.mp3"
+      ></audio>
+
     </article>
 
+
+
+    <!-- 06 PAMELA -->
+
     <article class="person">
+
+      <img
+        class="portrait"
+        src="PR.jpg"
+        alt="Pamela"
+      >
+
       <div class="number">06</div>
+
       <h2 class="name">Pamela</h2>
-      <button class="play" data-audio="pamela">Hören</button>
-      <audio id="pamela" src="Pamela.mp3"></audio>
+
+      <button
+        class="play"
+        data-audio="pamela"
+      >
+        Hören
+      </button>
+
+      <audio
+        id="pamela"
+        src="Pamela.mp3"
+      ></audio>
+
     </article>
+
 
   </section>
+
+
 
   <footer class="footer">
     Deutsch · Schreibkurs · Selbstvorstellung
   </footer>
 
+
 </main>
+
 
 
 <script>
@@ -288,35 +526,73 @@
 
     button.addEventListener("click", () => {
 
-      const audio = document.getElementById(button.dataset.audio);
+      const audio =
+        document.getElementById(
+          button.dataset.audio
+        );
+
+      /*
+       * Andere Audios stoppen
+       */
 
       audios.forEach(otherAudio => {
+
         if (otherAudio !== audio) {
+
           otherAudio.pause();
           otherAudio.currentTime = 0;
+
         }
+
       });
+
+
+      /*
+       * Andere Buttons zurücksetzen
+       */
 
       buttons.forEach(otherButton => {
+
         if (otherButton !== button) {
+
           otherButton.classList.remove("playing");
           otherButton.textContent = "Hören";
+
         }
+
       });
 
+
+      /*
+       * Aktuelles Audio starten / stoppen
+       */
+
       if (audio.paused) {
+
         audio.play();
+
         button.classList.add("playing");
         button.textContent = "Stop";
+
       } else {
+
         audio.pause();
+
         button.classList.remove("playing");
         button.textContent = "Hören";
+
       }
 
+
+      /*
+       * Nach Ende automatisch zurücksetzen
+       */
+
       audio.onended = () => {
+
         button.classList.remove("playing");
         button.textContent = "Hören";
+
       };
 
     });
@@ -324,6 +600,7 @@
   });
 
 </script>
+
 
 </body>
 </html>
